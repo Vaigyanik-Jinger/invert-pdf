@@ -2,7 +2,7 @@
 
 sudo apt update
 sudo apt upgrade -y
-sudo apt install -y imagemagick ocrmypdf ghostscript
+sudo apt install -y imagemagick ocrmypdf ghostscript pdftk
 mkdir ~/Scripts
 cd ~/Scripts
 mkdir invert-pdf
