@@ -7,7 +7,7 @@ mkdir ~/Scripts
 cd ~/Scripts
 mkdir invert-pdf
 cd invert-pdf
-curl -L -O ""
+curl -O -L https://raw.githubusercontent.com/Vaigyanik-Jinger/invert-pdf/main/invert-pdf.sh
 cd 
 new_alias="alias invertpdf='bash ~/Scripts/invert-pdf/invert-pdf.sh'"
 # Check if the alias is already in .bashrc to avoid duplicates
