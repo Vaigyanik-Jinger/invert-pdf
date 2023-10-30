@@ -11,7 +11,7 @@ rm $1.pdf
 counter=1
 
 for pdf_file in *.pdf; do
-    convert -density 400 -quality 100 "$pdf_file" "${counter}.jpg"
+    convert -density 200x200 -quality 70 "$pdf_file" "${counter}.jpg"
     ((counter++))
 done
 
@@ -23,8 +23,6 @@ echo "Dark PDF Created..."
 mv $1-dark.pdf ./..
 cd ..
 rm -r dark
-echo 'comprssing pdf...'
-convert -density 200x200 -quality 60 -compress jpeg $1-dark.pdf $1-dark.pdf
 echo "processing OCR..."
 ocrmypdf $1-dark.pdf dark-$1-readable.pdf
 rm $1-dark.pdf
