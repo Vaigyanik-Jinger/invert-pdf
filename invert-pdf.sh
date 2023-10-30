@@ -7,7 +7,14 @@ cp $1.pdf ./dark
 cd dark
 pdftk $1.pdf burst output output-page-%06d.pdf
 rm $1.pdf
-convert -density 400 -quality 100 *.pdf *.jpg
+
+counter=1
+
+for pdf_file in *.pdf; do
+    convert -density 400 -quality 100 "$pdf_file" "${counter}.jpg"
+    ((counter++))
+done
+
 echo "PNG Files Created..."
 mogrify -negate *.jpg
 echo "PNG Files Inverted..."
