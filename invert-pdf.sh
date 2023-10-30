@@ -5,7 +5,9 @@ cwd=$pwd
 mkdir dark
 cp $1.pdf ./dark
 cd dark
-convert -density 400 -quality 100 $1.pdf tmp.jpg
+pdftk $1.pdf burst output output-page-%06d.pdf
+rm $1.pdf
+convert -density 400 -quality 100 *.pdf *.jpg
 echo "PNG Files Created..."
 mogrify -negate *.jpg
 echo "PNG Files Inverted..."
