@@ -5,7 +5,7 @@ cwd=$pwd
 mkdir dark
 cp $1.pdf ./dark
 cd dark
-convert -density 200 -quality 100 $1.pdf output.jpg
+convert -density 200 -quality 100 $1.pdf "%05d.jpg"
 echo "Image Files Created..."
 mogrify -negate *.jpg
 echo "Image Files Inverted..."
