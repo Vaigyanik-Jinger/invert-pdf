@@ -5,24 +5,17 @@ cwd=$pwd
 mkdir dark
 cp $1.pdf ./dark
 cd dark
-pdftk $1.pdf burst output output-page-%06d.pdf
-rm $1.pdf
-
-counter=1
-
-for pdf_file in *.pdf; do
-    convert -density 200x200 -quality 70 "$pdf_file" "${counter}.jpg"
-    ((counter++))
-done
-
-echo "PNG Files Created..."
+convert -density 200 -quality 100 $1.pdf output.jpg
+echo "Image Files Created..."
 mogrify -negate *.jpg
-echo "PNG Files Inverted..."
+echo "Image Files Inverted..."
 convert *.jpg $1-dark.pdf
 echo "Dark PDF Created..."
 mv $1-dark.pdf ./..
 cd ..
 rm -r dark
+echo "compressing PDF"
+convert -density 200x200 -quality 70 $1-dark.pdf $1-dark.pdf
 echo "processing OCR..."
 ocrmypdf $1-dark.pdf dark-$1-readable.pdf
 rm $1-dark.pdf
